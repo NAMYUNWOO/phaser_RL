@@ -1,0 +1,356 @@
+{
+	"textures": [
+		{
+			"image": "sorcerer.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1280,
+				"h": 106
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "sorcerer01.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 78,
+						"h": 104
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 78,
+						"h": 104
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 78,
+						"h": 104
+					}
+				},
+				{
+					"filename": "sorcerer02.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 78,
+						"h": 104
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 78,
+						"h": 104
+					},
+					"frame": {
+						"x": 81,
+						"y": 1,
+						"w": 78,
+						"h": 104
+					}
+				},
+				{
+					"filename": "sorcerer03.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 78,
+						"h": 104
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 78,
+						"h": 104
+					},
+					"frame": {
+						"x": 161,
+						"y": 1,
+						"w": 78,
+						"h": 104
+					}
+				},
+				{
+					"filename": "sorcerer04.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 78,
+						"h": 104
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 78,
+						"h": 104
+					},
+					"frame": {
+						"x": 241,
+						"y": 1,
+						"w": 78,
+						"h": 104
+					}
+				},
+				{
+					"filename": "sorcerer05.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 78,
+						"h": 104
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 78,
+						"h": 104
+					},
+					"frame": {
+						"x": 321,
+						"y": 1,
+						"w": 78,
+						"h": 104
+					}
+				},
+				{
+					"filename": "sorcerer06.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 78,
+						"h": 104
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 78,
+						"h": 104
+					},
+					"frame": {
+						"x": 401,
+						"y": 1,
+						"w": 78,
+						"h": 104
+					}
+				},
+				{
+					"filename": "sorcerer07.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 78,
+						"h": 104
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 78,
+						"h": 104
+					},
+					"frame": {
+						"x": 481,
+						"y": 1,
+						"w": 78,
+						"h": 104
+					}
+				},
+				{
+					"filename": "sorcerer08.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 78,
+						"h": 104
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 78,
+						"h": 104
+					},
+					"frame": {
+						"x": 561,
+						"y": 1,
+						"w": 78,
+						"h": 104
+					}
+				},
+				{
+					"filename": "sorcerer09.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 78,
+						"h": 104
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 78,
+						"h": 104
+					},
+					"frame": {
+						"x": 641,
+						"y": 1,
+						"w": 78,
+						"h": 104
+					}
+				},
+				{
+					"filename": "sorcerer10.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 78,
+						"h": 104
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 78,
+						"h": 104
+					},
+					"frame": {
+						"x": 721,
+						"y": 1,
+						"w": 78,
+						"h": 104
+					}
+				},
+				{
+					"filename": "sorcerer11.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 78,
+						"h": 104
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 78,
+						"h": 104
+					},
+					"frame": {
+						"x": 801,
+						"y": 1,
+						"w": 78,
+						"h": 104
+					}
+				},
+				{
+					"filename": "sorcerer12.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 78,
+						"h": 104
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 78,
+						"h": 104
+					},
+					"frame": {
+						"x": 881,
+						"y": 1,
+						"w": 78,
+						"h": 104
+					}
+				},
+				{
+					"filename": "sorcerer13.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 78,
+						"h": 104
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 78,
+						"h": 104
+					},
+					"frame": {
+						"x": 961,
+						"y": 1,
+						"w": 78,
+						"h": 104
+					}
+				},
+				{
+					"filename": "sorcerer14.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 78,
+						"h": 104
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 78,
+						"h": 104
+					},
+					"frame": {
+						"x": 1041,
+						"y": 1,
+						"w": 78,
+						"h": 104
+					}
+				},
+				{
+					"filename": "sorcerer15.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 78,
+						"h": 104
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 78,
+						"h": 104
+					},
+					"frame": {
+						"x": 1121,
+						"y": 1,
+						"w": 78,
+						"h": 104
+					}
+				},
+				{
+					"filename": "sorcerer16.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 78,
+						"h": 104
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 78,
+						"h": 104
+					},
+					"frame": {
+						"x": 1201,
+						"y": 1,
+						"w": 78,
+						"h": 104
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:7004c8bc0dee09be3e9eb68336dd8af7:20ae07645d42f6c90f9fd34a12f69172:0d3d3b3804b26a183ef2dc029528c5df$"
+	}
+}
