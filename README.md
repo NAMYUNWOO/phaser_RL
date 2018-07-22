@@ -10,4 +10,4 @@
     will be updated
 
 ## MDP
-![MDP](https://latex.codecogs.com/svg.latex?V^\pi)
+![MDP](https://latex.codecogs.com/svg.latex?V^\pi(s)=R(s)+\gamma\sum_{s^\prime\inS}P_{s\pi(s)}(s^\prime)V^\pi(s^\prime))
