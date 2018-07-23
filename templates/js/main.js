@@ -465,46 +465,7 @@ function characterAction(characKey, charInput) {
       }
       */
       direction[characKey] = 4;
-    } else if (charInput.Attack) {
-      characs[characKey].body.setVelocityY(0);
-      characs[characKey].body.setVelocityX(0);
-
-      if (direction[characKey] == 1) {
-        characs[characKey].anims.play(characKey + '_hit_down', true);
-      }
-      else if (direction[characKey] == 2) {
-        characs[characKey].anims.play(characKey + '_hit_left', true);
-
-      }
-      else if (direction[characKey] == 3) {
-        characs[characKey].anims.play(characKey + '_hit_right', true);
-      }
-      else if (direction[characKey] == 4) {
-        characs[characKey].anims.play(characKey + '_hit_up', true);
-      }
-      AttackSys(characKey);
-      /*
-      if(characs[characKey].anims.currentFrame !=null && initAttack[characKey] && characs[characKey].anims.currentFrame.isLast){
-        console.debug("Attack!!!!");
-        initAttack[characKey] = false;
-        if (characKey == "sorcerer") {
-          fire.x = characs.hero.x;
-          fire.y = characs.hero.y;
-          fire.setDepth(characs.hero.depth+1);
-          fire.visible = true;
-          fire.anims.play("fire",true);
-        }
-      };
-      if(characs[characKey].anims.currentFrame !=null && !characs[characKey].anims.currentFrame.isLast){
-        initAttack[characKey] = true;
-        
-        if (characKey == "sorcerer" && fire.anims.currentFrame != null &&fire.anims.currentFrame.isLast) {
-          fire.visible = false;
-        }
-      }
-      */
-    } else {
-
+    }  else {
       characs[characKey].body.setVelocityY(0);
       characs[characKey].body.setVelocityX(0);
       if (direction[characKey] == 1) {
@@ -525,29 +486,29 @@ function characterAction(characKey, charInput) {
   }
   myBodyRefresh(characKey);
 }
-var startLeaern = false 
+var frame = 0 
 function newAction(self,actionInfo){
     gameScene.scene.resume();   
     AI =  actionInfo;//JSON.parse(actionInfo);
     heroInput = AI.heroInput;
     sorcererInput = AI.sorcererInput;
-    if (!startLeaern){
-      startLeaern = true
-    }
-    
+    frame = AI.frame
 }
-function getStateReward(){
+
+function getEnvInfo(){
   var state = {hero:{},sorcerer:{}}
   state.hero.animIdx = characs.hero.anims.currentFrame.index;
   state.hero.animKey = characs.hero.anims.currentAnim.key;
   state.hero.x = characs.hero.x;
   state.hero.y = characs.hero.y;
   state.hero.direction = direction.hero;
+  state.hero.HP = characs.hero.info.HP ;
   state.sorcerer.animIdx = characs.sorcerer.anims.currentFrame.index;
   state.sorcerer.animKey = characs.sorcerer.anims.currentAnim.key;
   state.sorcerer.x = characs.sorcerer.x;
   state.sorcerer.y = characs.sorcerer.y;
   state.sorcerer.direction = direction.sorcerer;
+  state.sorcerer.HP = characs.sorcerer.info.HP ;
   return state
 
 }
@@ -557,8 +518,8 @@ function update(time, delta) {
   characterAction("sorcerer", sorcererInput);
   //console.debug(characs.hero.anims.currentFrame.index)
   //console.debug(characs.hero.anims.currentAnim.key)
-  this.socket.emit("state",getStateReward())
-  if (startLeaern){
+  this.socket.emit("state",getEnvInfo())
+  if (frame != 0){
     gameScene.scene.pause()
   }
   /*
@@ -582,7 +543,7 @@ function update(time, delta) {
   characterAction("sorcerer", sorcererInput);
   */
   if (frame == 0){
-      this.socket.emit("state","frame randomstate")
+      this.socket.emit("state","not initiated")
   }
 };
 

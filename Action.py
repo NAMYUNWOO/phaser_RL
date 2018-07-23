@@ -1,6 +1,14 @@
 import random
 import time
 ACTIONS = ["Up","Down","Left","Right","Attack"]
+FRAME = 0
+def frame():
+    global FRAME
+    FRAME += 1
+    if FRAME % 1000000 == 0:
+        FRAME = 1
+    return FRAME
+
 def randomAction():
     global ACTIONINFO
     r1 = random.randint(0,4)
@@ -24,10 +32,31 @@ def randomAction():
     return ActionInfo
 
 
-
-def action(rewardStateMessage):
+def rewardSystem(envInfo):
     """
-        Input: reward and State of two agents
+        design your reward Sys
+    """
+    return 0,0
+
+def stateSystem(envInfo):
+    """
+        design your state Sys
+    """
+    return [],[]
+
+def getAgentsAction(r1s1,r2s2):
+    """
+        design your Action Sys
+    """
+
+    a1,a2 =  {"Up":True,"Down":False,"Left":False,"Right":False,"Attack":False},{"Up":True,"Down":False,"Left":False,"Right":False,"Attack":False}
+    return a1,a2
+
+def action(envInfo):
+    """
+    0. Description:
+
+        1. Input: envInfo about two agents
             - Dataformat i.e: 
                     {
                      'hero': 
@@ -36,7 +65,8 @@ def action(rewardStateMessage):
                              'animKey': 'hero_up', 
                              'x': 28.49953198488525, 
                              'y': 169.99999955744386, 
-                             'direction': 4
+                             'direction': 4,
+                             'HP':80
                              }, 
                      'sorcerer': 
                             {
@@ -45,6 +75,7 @@ def action(rewardStateMessage):
                              'x': 503.3330993257755, 
                              'y': 513.333569553671, 
                              'direction': 4
+                             'HP':60
                              }
                     }
 
@@ -54,12 +85,14 @@ def action(rewardStateMessage):
             animKey: explain of current animation
             x: agent x location
             y: agent y location
+            HP: Health Point
             direction: agent's front direction (1:down, 2:left, 3:right: 4:up)
 
 
-        Output: Actions of tow agents
+        2. Output: Actions of tow agents
             - Dataformat i.e:
                             {
+                            "frame": 0,
                             "heroInput":
                                         {
                                         'Up': True,
@@ -81,5 +114,9 @@ def action(rewardStateMessage):
             
 
     """
-    print(rewardStateMessage)
-    return randomAction() 
+    print(envInfo)
+
+    r1,r2 = rewardSystem(envInfo)
+    s1,s2 = stateSystem(envInfo)
+    a1,a2 = getAgentsAction((r1,s1),(r2,s2))
+    return {"frame":frame(),"heroInput":a1,"sorcererInput":a2}

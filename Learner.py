@@ -21,8 +21,8 @@ socketio = SocketIO(app)
 def index():
     return render_template('index.html')
 @socketio.on('state')
-def getState(rewardStateMessage):
-    emit("Action",action(rewardStateMessage))
+def getState(envInfo):
+    emit("Action",action(envInfo))
 
 @socketio.on('start')
 def startSign(message):
