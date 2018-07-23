@@ -4,7 +4,7 @@
     Flask, flask-socketio, Neural-Network library (will be updated)
 
 ## How to Run
-    FLASK_APP=Learner.py FLASK_DEBUG=1 python -m flask run
+    python ./Learner.py
 
 ## How to train
     will be updated
