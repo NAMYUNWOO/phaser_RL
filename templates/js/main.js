@@ -410,7 +410,11 @@ function characterAction(characKey, charInput) {
     }
     */
   } else {
-    attacks[characAttack[characKey].key].anims.stop();
+
+    attacks.locating.visible = false;
+    attacks[characAttack[characKey].key].visible = false;
+    attacks[characAttack[characKey].key].attack = false;
+    //attacks[characAttack[characKey].key].anims.stop();
     if (charInput.Down) {
 
       characs[characKey].body.setVelocityY(characInfos["characInfo_" + characKey].moveVal);
@@ -519,28 +523,42 @@ function characterAction(characKey, charInput) {
 
     }
   }
-  if (charInput.AttackQuit) {
-    attacks.locating.visible = false;
-    attacks[characAttack[characKey].key].visible = false;
-    attacks[characAttack[characKey].key].attack = false;
-  }
   myBodyRefresh(characKey);
 }
-var frame = 0
+var startLeaern = false 
 function newAction(self,actionInfo){
     gameScene.scene.resume();   
     AI =  actionInfo;//JSON.parse(actionInfo);
-    frame = AI.frame ;
     heroInput = AI.heroInput;
     sorcererInput = AI.sorcererInput;
+    if (!startLeaern){
+      startLeaern = true
+    }
     
+}
+function getStateReward(){
+  var state = {hero:{},sorcerer:{}}
+  state.hero.animIdx = characs.hero.anims.currentFrame.index;
+  state.hero.animKey = characs.hero.anims.currentAnim.key;
+  state.hero.x = characs.hero.x;
+  state.hero.y = characs.hero.y;
+  state.hero.direction = direction.hero;
+  state.sorcerer.animIdx = characs.sorcerer.anims.currentFrame.index;
+  state.sorcerer.animKey = characs.sorcerer.anims.currentAnim.key;
+  state.sorcerer.x = characs.sorcerer.x;
+  state.sorcerer.y = characs.sorcerer.y;
+  state.sorcerer.direction = direction.sorcerer;
+  return state
+
 }
 function update(time, delta) {
   //console.debug(gameScene);
   characterAction("hero", heroInput);
   characterAction("sorcerer", sorcererInput);
-  this.socket.emit("state",{a:1})
-  if (frame != 0){
+  //console.debug(characs.hero.anims.currentFrame.index)
+  //console.debug(characs.hero.anims.currentAnim.key)
+  this.socket.emit("state",getStateReward())
+  if (startLeaern){
     gameScene.scene.pause()
   }
   /*
