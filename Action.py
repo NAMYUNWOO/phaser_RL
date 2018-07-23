@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+"""
+@author: Nam Yunwoo 
+"""
 import random
 import time
 ACTIONS = ["Up","Down","Left","Right","Attack"]

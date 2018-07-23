@@ -1,3 +1,7 @@
+/*
+@author: Nam Yunwoo 
+*/
+
 var config = {
   type: Phaser.AUTO,
   width: 960,

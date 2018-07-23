@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+"""
+@author: Nam Yunwoo 
+"""
 import os
 import json
 from Action import action,randomAction
