@@ -4,17 +4,19 @@
 1. Flask
 2. flask-socketio
 3. your own Neural-Network library (if needed)
-
+---
 
 ## How to Run
     $ python ./Learner.py
-
+---
 
 ## How to train
 1. open Action.py 
 2. maniplulate **action function** with your own RL algorithm
 3. regarding **action function** you receive reward and state and should return action
+---
 
+## Environment
 
 ## Reinforcement-Learning
 ### MDP
