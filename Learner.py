@@ -26,7 +26,8 @@ def index():
     return render_template('index.html')
 @socketio.on('state')
 def getState(envInfo):
-    emit("Action",action(envInfo))
+    emit("Action",randomAction())
+    #emit("Action",action(envInfo))
 
 @socketio.on('start')
 def startSign(message):

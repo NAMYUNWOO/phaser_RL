@@ -58,8 +58,12 @@ var fire;
 var slash;
 var attacks = {};
 function preload() {
-  var staticUrl_ = document.querySelector('.staticUrl');
-  var staticUrl = staticUrl_.attributes.name.value
+  try {
+    var staticUrl_ = document.querySelector('.staticUrl');
+    var staticUrl = staticUrl_.attributes.name.value
+  }catch{
+    var staticUrl = "./";
+  }
   //console.debug(staticUrl);
   this.load.tilemapTiledJSON('map',staticUrl+ 'assets/map.json');
   // tiles in spritesheet `
@@ -201,12 +205,15 @@ function attackEffectReady(attackInfo) {
 }
 // executed once, after assets were loaded
 function create() {
-  this.socket = io.connect("http://" + document.domain + ":" + location.port);
-  var self = this;
-  this.socket.on('Action', function (ActionInfo) {
-    newAction(self, ActionInfo);
-  });
-  this.socket.emit("start","start");
+  try{
+    this.socket = io.connect("http://" + document.domain + ":" + location.port);
+    var self = this;
+    this.socket.on('Action', function (ActionInfo) {
+      newAction(self, ActionInfo);
+    });
+    this.socket.emit("start","start");
+  }catch{
+  }
   this.debugGraphics = this.add.graphics();
   gameScene = this;
   map = this.make.tilemap({ key: 'map' });
@@ -518,37 +525,41 @@ function getEnvInfo(){
 }
 function update(time, delta) {
   //console.debug(gameScene);
-  characterAction("hero", heroInput);
-  characterAction("sorcerer", sorcererInput);
   //console.debug(characs.hero.anims.currentFrame.index)
   //console.debug(characs.hero.anims.currentAnim.key)
-  this.socket.emit("state",getEnvInfo())
-  if (frame != 0){
-    gameScene.scene.pause()
-  }
-  /*
-  sorcererInput = {
-    Up: gameScene.input.keyboard.keys[myInput.W].isDown,
-    Down: gameScene.input.keyboard.keys[myInput.S].isDown,
-    Left: gameScene.input.keyboard.keys[myInput.A].isDown,
-    Right: gameScene.input.keyboard.keys[myInput.D].isDown,
-    Attack: cursors.shift.isDown,
-    AttackQuit: cursors.shift.isUp
-  };
-  heroInput = {
-    Up: cursors.up.isDown,
-    Down: cursors.down.isDown,
-    Left: cursors.left.isDown,
-    Right: cursors.right.isDown,
-    Attack: cursors.space.isDown,
-    AttackQuit: cursors.space.isUp
-  };
-  characterAction("hero", heroInput);
-  characterAction("sorcerer", sorcererInput);
-  */
-  if (frame == 0){
-      this.socket.emit("state","not initiated")
-  }
+
+  try{
+      this.socket.emit("state",getEnvInfo())
+      characterAction("hero", heroInput);
+      characterAction("sorcerer", sorcererInput);
+      if (frame != 0){
+        gameScene.scene.pause()
+      }
+
+      if (frame == 0){
+          this.socket.emit("state","not initiated")
+      }
+  }catch{
+        sorcererInput = {
+          Up: gameScene.input.keyboard.keys[myInput.W].isDown,
+          Down: gameScene.input.keyboard.keys[myInput.S].isDown,
+          Left: gameScene.input.keyboard.keys[myInput.A].isDown,
+          Right: gameScene.input.keyboard.keys[myInput.D].isDown,
+          Attack: cursors.shift.isDown,
+          AttackQuit: cursors.shift.isUp
+        };
+        heroInput = {
+          Up: cursors.up.isDown,
+          Down: cursors.down.isDown,
+          Left: cursors.left.isDown,
+          Right: cursors.right.isDown,
+          Attack: cursors.space.isDown,
+          AttackQuit: cursors.space.isUp
+        };
+        characterAction("hero", heroInput);
+        characterAction("sorcerer", sorcererInput);
+      }
+
 };
 
 function render() {
