@@ -8,6 +8,8 @@
 
 ## How to Run
     $ python ./Learner.py
+    $ to test game, use https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb and set folder with /templates_test
+
 <br><br>
 
 ## How to train
