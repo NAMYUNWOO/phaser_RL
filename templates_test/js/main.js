@@ -77,6 +77,7 @@ function preload() {
   this.load.atlas('slash', staticUrl+'assets/slash.png', staticUrl+'assets/slash.json');
   this.load.atlas('locating', staticUrl+'assets/locating.png', staticUrl+'assets/locating.json');
   this.load.image('statue', staticUrl+'assets/statue.png');
+  this.load.image('potion', staticUrl+'assets/potion.png');
   //this.load.image('health', 'assets/health.png');
   //this.load.scenePlugin('GridPhysics', "./js/GridPhysics.js", "gridPhysics", "gridPhysics");
 };
