@@ -5,7 +5,9 @@
 2. flask-socketio
 3. your own Neural-Network library (if needed)
 <br><br>
-
+## Big Picture
+![explain](./img/phaser_js_RL_explain.jpg)
+<br><br>
 ## How to Run
     $ python ./Learner.py
     $ to test game, use https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb and set folder with /templates_test
