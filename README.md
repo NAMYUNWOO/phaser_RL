@@ -6,7 +6,7 @@
 3. your own Neural-Network library (if needed)
 <br><br>
 ## Big Picture
-![explain](./img/phaser_js_RL_explain.jpg)
+![explain](./img/phaser_js_RL_ex.jpg)
 <br><br>
 ## How to Run
     $ python ./Learner.py
