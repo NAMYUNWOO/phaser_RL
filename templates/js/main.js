@@ -56,6 +56,7 @@ var statueGroup;
 var gameScene;
 var fire;
 var slash;
+var potion
 var attacks = {};
 function preload() {
   try {
@@ -77,6 +78,7 @@ function preload() {
   this.load.atlas('slash', staticUrl+'assets/slash.png', staticUrl+'assets/slash.json');
   this.load.atlas('locating', staticUrl+'assets/locating.png', staticUrl+'assets/locating.json');
   this.load.image('statue', staticUrl+'assets/statue.png');
+  this.load.image('potion', staticUrl+'assets/potion.png');
   //this.load.image('health', 'assets/health.png');
   //this.load.scenePlugin('GridPhysics', "./js/GridPhysics.js", "gridPhysics", "gridPhysics");
 };
@@ -126,6 +128,9 @@ function characterReady(characInfo) {
       gameScene.physics.add.overlap(characs[characInfo.key], attacks[attack], attackAct, null, gameScene);
 
   }
+
+  gameScene.physics.add.overlap(characs[characInfo.key], potion, eatPotion, null, gameScene);
+
   let moves = ["down", "left", "right", "up"];
   for (var i = 0; i < moves.length; i++) {
 
@@ -154,6 +159,18 @@ function characterReady(characInfo) {
     });
   }
 }
+
+function eatPotion(charac,potion,extra){
+  charac.info.HP += Math.min(charac.info.HP_origin - charac.info.HP, 10);
+  if (charac.info.HP >= (charac.info.HP_origin / 3) ) {
+    characStatus[charac.info.key].health.setColor("#ffffff");
+  }
+  characStatus[charac.info.key].health.setText(charac.info.HP);
+  potion.x = Phaser.Math.Between(10, 950);
+  potion.y = Phaser.Math.Between(150,900);
+
+}
+
 function finishGame() {
   for (charac in characs) {
     characs[charac].info.HP = characs[charac].info.HP_origin;
@@ -183,6 +200,9 @@ function attackAct(charac, attack, extra) {
     characStatus[charac.info.key].health.setText(charac.info.HP);
   }
 }
+
+
+
 function attackEffectReady(attackInfo) {
   if (attackInfo.bodyEnable) {
     attacks[attackInfo.key] = gameScene.physics.add.sprite(400, 300, attackInfo.key, attackInfo.key + "01.png");
@@ -227,6 +247,9 @@ function create() {
   this.physics.world.bounds.width = groundLayer.width;
   this.physics.world.bounds.height = groundLayer.height;
 
+  //potion
+  potion = this.physics.add.sprite(Phaser.Math.Between(10,950),Phaser.Math.Between(150,900) , 'potion');
+
   // attack set 
   var attackInfoSlash = { key: "slash", scale: 3.0, frameSize: 6, frameRate: 30, repeat: -1, effect: 3, owner: "hero", bodyEnable: true };
   var attackInfoFire = { key: "fire", scale: 1.5, frameSize: 12, frameRate: 30, repeat: 1, effect: 9, owner: "sorcerer", bodyEnable: true };
@@ -269,7 +292,7 @@ function create() {
    this.physics.add.collider(statueGroup, characs.sorcerer);
    this.physics.add.collider(onGroundLayer, statueGroup);
    */
-
+  
   this.physics.add.collider(onGroundLayer, characs.hero);
 
   this.physics.add.collider(onGroundLayer, characs.sorcerer);
