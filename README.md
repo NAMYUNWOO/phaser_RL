@@ -8,6 +8,12 @@
 ## Big Picture
 ![explain](./img/phaser_js_RL_ex.jpg)
 <br><br>
+
+## Environment
+Chick to Play Video
+[![env](./img/env_thumbnail.png)](https://youtu.be/tS9cRWf7uoE)
+<br><br>
+
 ## How to Run
     $ python ./Learner.py
     $ to test game, use https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb and set folder with /templates_test
