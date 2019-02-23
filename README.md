@@ -10,7 +10,7 @@
 <br><br>
 
 ## Environment
-Chick to Play Video
+Click to Play Video
 [![env](./img/env_thumbnail.png)](https://youtu.be/tS9cRWf7uoE)
 <br><br>
 
