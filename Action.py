@@ -13,6 +13,8 @@ def frame():
         FRAME = 1
     return FRAME
 
+        
+        
 def randomAction():
     global ACTIONINFO
     r1 = random.randint(0,4)
@@ -81,6 +83,11 @@ def action(envInfo):
                              'direction': 4
                              'HP':60
                              }
+                     'potion':
+                            {
+                             'x': 101.1,
+                             'y': 101.1
+                            }
                     }
 
             hero: agent1 name
@@ -91,9 +98,9 @@ def action(envInfo):
             y: agent y location
             HP: Health Point
             direction: agent's front direction (1:down, 2:left, 3:right: 4:up)
+            potion: potion name and locations
 
-
-        2. Output: Actions of tow agents
+        2. Output: Actions for two agents
             - Dataformat i.e:
                             {
                             "frame": 0,

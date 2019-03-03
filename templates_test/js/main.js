@@ -530,7 +530,7 @@ function newAction(self,actionInfo){
 }
 
 function getEnvInfo(){
-  var state = {hero:{},sorcerer:{}}
+  var state = {hero:{},sorcerer:{},potion:{}}
   state.hero.animIdx = characs.hero.anims.currentFrame.index;
   state.hero.animKey = characs.hero.anims.currentAnim.key;
   state.hero.x = characs.hero.x;
@@ -543,6 +543,8 @@ function getEnvInfo(){
   state.sorcerer.y = characs.sorcerer.y;
   state.sorcerer.direction = direction.sorcerer;
   state.sorcerer.HP = characs.sorcerer.info.HP ;
+  state.potion.x = potion.x ;
+  state.potion.y = potion.y ;
   return state
 
 }
