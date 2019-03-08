@@ -4,7 +4,7 @@
 """
 import os
 import json
-from Action import action,randomAction
+from Action import action,randomAction,ruleAction
 from flask import Flask, render_template
 from flask_socketio import SocketIO,emit
 import re
@@ -26,7 +26,10 @@ def index():
     return render_template('index.html')
 @socketio.on('state')
 def getState(envInfo):
-    emit("Action",randomAction())
+    # print(envInfo)
+    # action = randomAction()
+    # print(action)
+    emit("Action",ruleAction(envInfo))
     #emit("Action",action(envInfo))
 
 @socketio.on('start')

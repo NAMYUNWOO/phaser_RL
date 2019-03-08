@@ -4,7 +4,11 @@
 """
 import random
 import time
+from RuleBasedAction import ruleBasedAction
 ACTIONS = ["Up","Down","Left","Right","Attack"]
+actionHero,actionsorcerer = 'Up','Up'
+baseActionHero = {"Up":False,"Down":False,"Left":False,"Right":False,"Attack":False}
+baseActionSorcerer = {"Up":False,"Down":False,"Left":False,"Right":False,"Attack":False}
 FRAME = 0
 def frame():
     global FRAME
@@ -13,7 +17,19 @@ def frame():
         FRAME = 1
     return FRAME
 
-        
+
+def ruleAction(envInfo):
+    '{"hero":heroAction,"sorcerer":""}'
+    global actionHero,actionsorcerer
+    baseActionHero[actionHero] = False
+    baseActionSorcerer[actionsorcerer] = False    
+    action = ruleBasedAction(envInfo)
+    actionHero = action['hero']
+    actionsorcerer = action['sorcerer']
+    baseActionHero[actionHero] = True
+    baseActionSorcerer[actionsorcerer] = True
+    return {"frame":frame(),"heroInput":baseActionHero,"sorcererInput":baseActionSorcerer}
+    
         
 def randomAction():
     global ACTIONINFO
