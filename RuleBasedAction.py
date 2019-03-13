@@ -1,22 +1,29 @@
 
+import time
 import numpy as np
 heroFacing,sorcererFacing = "Up","Up"
-
+lastAction  =  {"hero":"Attack",'sorcerer':"Attack"}
+timeNow = time.time()
 def checkHealth(heroHP,sorcererHP):
     heroHPLow = (heroHP < 30)
     sorcererHPLow = (sorcererHP < 30)
     return heroHPLow,sorcererHPLow
 
 def ruleBasedAction(envInfo):
-    global heroFacing,sorcererFacing
-    hp1 = envInfo['hero']['HP']
-    hp2=  envInfo['sorcerer']['HP']
-    heroX, heroY = envInfo['hero']['x'], envInfo['hero']['y']+2
-    sorcererX, sorcererY = envInfo['sorcerer']['x'],envInfo['sorcerer']['y']
-    potionX, potionY = envInfo['potion']['x'],envInfo['potion']['y']
-    heroHPLow,sorcererHPLow = checkHealth(hp1,hp2)
-    print(heroX,heroY)
-    print("    ",potionX,potionY)
+    global heroFacing,sorcererFacing,lastAction,timeNow
+    try:
+        hp1 = envInfo['hero']['HP']
+        hp2=  envInfo['sorcerer']['HP']
+        heroX, heroY = envInfo['hero']['x'], envInfo['hero']['y']
+        sorcererX, sorcererY = envInfo['sorcerer']['x'],envInfo['sorcerer']['y']
+        potionX, potionY = envInfo['potion']['x'],envInfo['potion']['y']
+        heroHPLow,sorcererHPLow = checkHealth(hp1,hp2)
+    except Exception as err:
+        return lastAction
+    timeCand = time.time()
+    if (timeCand - timeNow) < 0.1:
+        return lastAction
+    print(envInfo)
     #HeroAction
     if heroHPLow:
         xDist,yDist = ( heroX - potionX ,heroY - potionY) 
@@ -76,7 +83,8 @@ def ruleBasedAction(envInfo):
         heroFacing = heroAction
     #SorcererAction
     #...
-
-    return {"hero":heroAction,'sorcerer':"Attack"}
+    lastAction = {"hero":heroAction,'sorcerer':"Attack"}
+    timeNow = timeCand
+    return lastAction
 
 
