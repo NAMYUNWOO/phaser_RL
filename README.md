@@ -31,5 +31,5 @@ Click to Play Video
 ## Reinforcement-Learning
 ### MDP
 ![MDP](https://latex.codecogs.com/svg.latex?V^\pi(s)=R(s)+\gamma\sum_{s^\prime\in{S}}P_{s\pi(s)}(s^\prime)V^\pi(s^\prime))
-\n
+<br>
 to be updated...
