@@ -3,7 +3,7 @@
 ## Dependencies
 1. Flask
 2. flask-socketio
-3. your own Neural-Network library (if needed)
+3. your own Neural-Network library (if it is necessary)
 <br><br>
 ## Big Picture
 ![explain](./img/phaser_js_RL_ex.jpg)
@@ -31,3 +31,4 @@ Click to Play Video
 ## Reinforcement-Learning
 ### MDP
 ![MDP](https://latex.codecogs.com/svg.latex?V^\pi(s)=R(s)+\gamma\sum_{s^\prime\in{S}}P_{s\pi(s)}(s^\prime)V^\pi(s^\prime))
+to be updated...
